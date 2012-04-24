@@ -1,0 +1,30 @@
+/*--
+	Landscape view
+--*/
+@media screen and (min-width: 768px){
+/* Styles */
+	body {
+		max-width: 710px;
+	}
+}
+
+/*--
+	Desktop and laptops
+--*/
+@media only screen and (min-width: 1024px) {
+/* Styles */
+	body {
+		max-width: 830px;
+		font-size: 35px;
+	}
+}
+
+}
+
+/*--
+	Large screens
+--*/
+@media only screen and (min-width : 1824px) {
+/* Styles */
+
+}
