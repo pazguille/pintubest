@@ -62,16 +62,18 @@ app.get("/best/:query?", function (req, res, next) {
 	
 	if (req.query.q) {
 		res.redirect("/best/" + req.query.q.split(" ").join("+"), 301);
+		return;
 	}
 
-	var query = (req.params.query !== undefined) ? req.params.query.split("+").join(" ") : undefined,
+	if (req.params.query === undefined) {
+		res.redirect("/", 301);
+		return;
+	}
+
+	var query = req.params.query.split("+").join(" "),
 		page = parseInt(req.query.page) || 1,
 		id = page - 1,
 		search = pintubest.search();
-
-	if (query === undefined) {
-		res.redirect("/", 301);
-	}
 
 	search.run({
 		"query": escape(query),
