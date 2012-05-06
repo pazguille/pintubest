@@ -1,0 +1,7 @@
+- var query = query || "";
+header.ch-header
+	h1.ch-logo.ch-icon-play-circle
+		a(href="/") Pintubest
+	form.ch-form.ch-header-form(action="/best", method="GET", role="search")
+		input#query.search(type="text", maxlength="60", name="q", value="#{query}", autocomplete="off", placeholder="Search...")
+		input.ch-icon-search(type="submit", value="Search", accesskey="s")

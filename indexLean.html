@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<script></script>
+		<meta charset="utf-8" />
+		
+		<title>Pintube</title>
+		
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="HandheldFriendly" content="True" />
+		<meta name="MobileOptimized" content="320" />
+		<meta http-equiv="cleartype" content="on" />
+		
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Pintube</h1>
+		</header>
+		<section id="results">
+			<p>Loading...</p>
+		</section>
+		
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script>
+			var u = "http://gdata.youtube.com/feeds/api/standardfeeds/most_viewed?time=this_week&alt=json&max-results=30&format=5"
+			
+			$.getJSON(u, function (data) {
+				
+				var list = [];
+				
+				$(data.feed.entry).each(function (i, e) {
+					list.push(
+						"<article>",
+						"<figure>",
+						"<img src=\"" + e["media$group"]["media$thumbnail"][0].url + "\" alt=\"" + e.title["$t"] + "\" />",
+						"<figcaption>" + e.title["$t"] + "</figcaption>",
+						"</figure>",
+						"<ul class=\"stats\">",
+						"<li>" + e["yt$statistics"].viewCount + " views</li>"
+					);
+					
+					if (e["gd$comments"]) {
+						list.push("<li>" + e["gd$comments"]["gd$feedLink"].countHint + " comments</li>");
+					}
+					
+					list.push("</ul>");
+					list.push("<p class=\"author\">by <strong>" + e.author[0].name["$t"] + "</strong></p>");
+					
+					if (e["gd$comments"]) {
+						
+						var comments = ["<ul class=\"comments\">"];
+						
+						$.getJSON(e["gd$comments"]["gd$feedLink"].href + "?alt=json", function (data) {
+							
+							var comment = ["<li>"];
+							
+							$(data.feed.entry).each(function (i, e) {
+								comment.push(
+									"<strong>" + e.author[0].name["$t"] + "</strong> ",
+									e.content["$t"]
+								);
+							});
+							
+							comment.push("</li>");
+							
+							comments.push(
+								comment.join(""),
+								"</ul>"
+							);
+							
+							//list.push(comments.join(""));
+						});
+						
+					}
+					
+					list.push("</article>");
+				});
+				
+				$("#results").html(list.join(""));
+			});
+		</script>
+	</body>
+</html>

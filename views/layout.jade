@@ -4,7 +4,9 @@ html.no-js(lang="en")
 		meta(charset="utf-8")
 		title Pintubest :)
 		link(rel="shortcut icon", href="/src/assets/favicon.ico")
+		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Lobster+Two:400italic")
 		link(rel="stylesheet", href="/src/css/normalize.css")
+		link(rel="stylesheet", href="/src/css/chico.css")
 		link(rel="stylesheet", href="/src/css/pintubest.css")
 
 		meta(name="HandheldFriendly", content="True")
@@ -15,4 +17,8 @@ html.no-js(lang="en")
 		link(rel="stylesheet", href="/src/css/tablet.css", media="only screen and (min-width: 768px)")
 
 	body
+		include includes/header
+
 		!= body
+
+		include includes/footer
