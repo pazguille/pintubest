@@ -25,8 +25,30 @@ html.no-js(lang="en")
 
 		include includes/footer
 
+		script(src="http://code.jquery.com/jquery.min.js")
 		script
-			var _gaq=[['_setAccount','UA-15753373-5'],['_trackPageview']];
+
+			var _gaq=[['_setAccount','UA-15753373-5'],['_trackPageview']],
+				$videoList = $(".ch-slats"),
+				$iframe = $("<iframe width=\\"100%\\" frameborder=\\"0\\" allowfullscreen>");
+
+			$videoList.on("click", ".video figure a", function () {
+				$i = $iframe.clone();
+				$i.prop({
+					"src": this.href,
+					"height": this.clientHeight - 4
+				});
+				this.parentElement.replaceChild($i[0], this);
+				return false;
+			});
+
+			$videoList.on("click", ".repin", function () {
+				window.showModalDialog(this.href);
+				return false;
+			});
+
 			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 			g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 			s.parentNode.insertBefore(g,s)}(document,'script'));
+
+

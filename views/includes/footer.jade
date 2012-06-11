@@ -1,11 +1,11 @@
 - var video = video || undefined;
 - var searchPage = searchPage || undefined;
 - var query = query.split(" ").join("+");
-
-- if (video !== undefined && video.length === 30)
+- var end = end || false;
+- if (video !== undefined && !end)
 	footer
-	- if (searchPage === undefined)
+	- if (searchPage === undefined && video.length === 12)
 		a.ch-btn.more(href="/page/#{page+1}") Keep going
 
-	- else if (video !== undefined && video.length === 30 && searchPage)
-		a.ch-btn.more(href="/best/#{query}?page=#{searchPage+1}") Keep going
+	- else if (video !== undefined && video.length === 12 && searchPage)
+		a.ch-btn.more(href="/#{query}/page/#{searchPage+1}") Keep going

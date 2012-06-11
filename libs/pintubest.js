@@ -4,7 +4,7 @@ var sys = require("util"),
 	https = require("https"),	
 	Pintubest = (function () {
 		var that = new eventEmitter,
-			max_results = 30,
+			max_results = 12,
 			makeRequest = function (options) {
 				var that = this,
 					data = "",
@@ -25,6 +25,7 @@ var sys = require("util"),
 				req.end();
 			};
 
+		that.max_results = max_results;
 		that.hottest =  function () {
 			// Aplicar posibles filtros
 			// today
@@ -44,7 +45,7 @@ var sys = require("util"),
 				options = function () {
 					return {
 						host: "gdata.youtube.com",
-						path: "/feeds/api/standardfeeds/most_popular?v=2&time=all_time&alt=json&format=5&max-results=" + max_results + "&start-index=" + (max_results * start - max_results + 1),
+						path: "/feeds/api/standardfeeds/most_popular?v=2&time=today&alt=json&format=5&max-results=" + max_results + "&start-index=" + (max_results * start - max_results + 1),
 						method: "GET"
 					}
 				};
@@ -65,7 +66,7 @@ var sys = require("util"),
 			},
 
 			that.on("requestend", function (data) {
-				collection[start-1] = data.feed.entry
+				collection[start-1] = data.feed.entry;
 				that.emit("render");
 			});
 

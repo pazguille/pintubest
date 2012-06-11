@@ -52,8 +52,13 @@
 }
 
 .ch-header-form input.search {
-	margin-right: 45px;
 	width: 50%;
+	position: absolute;
+	top: 5px;
+	right: 45px;
+	padding: 0 5px;
+	margin: 0;
+	height: 31px;
 }
 
 .ch-header-form input[type="submit"],
@@ -61,15 +66,17 @@
 .ch-header-form input[type="submit"]:hover {
 	background: white url("../assets/sprite-mobile.png") no-repeat 8px 4px;
 	width: 30px;
-	height: 34px;
+	height: 33px;
 	text-indent: -100px;
 	position: absolute;
 	top: 5px;
 	right: 6px;
 	margin: 0;
 	border-width: 1px 1px 1px 0;
-	padding: 0 20px;
 	border-radius: 0px 3px 3px 0px;
+	line-height: 34px;
+	padding: 0 20px;
+	margin: 0;
 }
 
 
@@ -88,7 +95,7 @@ a.ch-btn:visited {
 	border-bottom-color: #bbb;
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
 	background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-	background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
+	background-image: -moz-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
 	background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
 	background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
 	background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
@@ -106,12 +113,12 @@ a.ch-btn-skin:visited {
 	text-shadow: 0 1px rgba(255, 255, 255, 0.9);
 	box-shadow: inset 0 1px rgba(255,255,255,0.35);
 	border-color: #BBB;
-	background: -ms-linear-gradient(center top, #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
-	background: -moz-linear-gradient(center top, #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
-	background: -o-linear-gradient(top left, #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
+	background: -ms-linear-gradient(#FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
+	background: -moz-linear-gradient(#FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
+	background: -o-linear-gradient#FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
 	background: -webkit-linear-gradient(top left, #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FDFAFB), to(#F0EDED), color-stop(.5,#F9F7F7),color-stop(.5,#F6F3F4));
-	background: linear-gradient(top left, #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
+	background: linear-gradient(#FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
 }
 
 .ch-btn:active {
@@ -119,12 +126,12 @@ a.ch-btn-skin:visited {
 	text-shadow: 0 -1px rgba(34, 25, 25, 0.6);
 	border-color: #510000;
 	background-color: #c83031;
-	background: -ms-linear-gradient(center top, #dd4b5d, #d5414b 50%, #d33d46 50%, #c83031);
-	background: -moz-linear-gradient(center top, #dd4b5d, #d5414b 50%, #d33d46 50%, #c83031);
-	background: -o-linear-gradient(top left, #dd4b5d, #d5414b 50%, #d33d46 50%, #c83031);
+	background: -ms-linear-gradient(#dd4b5d, #d5414b 50%, #d33d46 50%, #c83031);
+	background: -moz-linear-gradient(#dd4b5d, #d5414b 50%, #d33d46 50%, #c83031);
+	background: -o-linear-gradient(#dd4b5d, #d5414b 50%, #d33d46 50%, #c83031);
 	background: -webkit-linear-gradient(top left, #dd4b5d, #d5414b 50%, #d33d46 50%, #c83031);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d5414b), to(#c83031), color-stop(.5,#d5414b),color-stop(.5,#d33d46));
-	background: linear-gradient(top left, #dd4b5d, #d5414b 50%, #d33d46 50%, #c83031);
+	background: linear-gradient(#dd4b5d, #d5414b 50%, #d33d46 50%, #c83031);
 	box-shadow: inset 0 1px 2px rgba(34,25,25,0.25), 0 0 4px rgba(235,82,82,0.35);
 	-moz-box-shadow: inset 0 1px 2px rgba(34,25,25,0.25), 0 0 4px rgba(235,82,82,0.35);
 	-webkit-box-shadow: inset 0 1px 2px rgba(34,25,25,0.25), 0 0 4px rgba(235,82,82,0.35);
@@ -135,12 +142,12 @@ a.ch-btn-skin:visited {
 	text-shadow: 0 1px rgba(255,255,255,0.8);
 	border-color: #b7b7b7;
 	background-color: #ebe8e8;
-	background: -ms-linear-gradient(center top, #f8f4f5, #f3f0f0 50%, #f1eeef 50%, #ebe8e8);
-	background: -moz-linear-gradient(center top, #f8f4f5, #f3f0f0 50%, #f1eeef 50%, #ebe8e8);
-	background: -o-linear-gradient(top left, #f8f4f5, #f3f0f0 50%, #f1eeef 50%, #ebe8e8);
+	background: -ms-linear-gradient(#f8f4f5, #f3f0f0 50%, #f1eeef 50%, #ebe8e8);
+	background: -moz-linear-gradient(#f8f4f5, #f3f0f0 50%, #f1eeef 50%, #ebe8e8);
+	background: -o-linear-gradient(#f8f4f5, #f3f0f0 50%, #f1eeef 50%, #ebe8e8);
 	background: -webkit-linear-gradient(top left, #f8f4f5, #f3f0f0 50%, #f1eeef 50%, #ebe8e8);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f8f4f5), to(#ebe8e8), color-stop(.5,#f3f0f0),color-stop(.5,#f1eeef));
-	background: linear-gradient(top left, #f8f4f5, #f3f0f0 50%, #f1eeef 50%, #ebe8e8);
+	background: linear-gradient(#f8f4f5, #f3f0f0 50%, #f1eeef 50%, #ebe8e8);
 	box-shadow: inset 0 1px 2px rgba(34,25,25,0.25), 0 0 4px rgba(232,230,230,0.5);
 	-moz-box-shadow: inset 0 1px 2px rgba(34,25,25,0.25), 0 0 4px rgba(232,230,230,0.5);
 	-webkit-box-shadow: inset 0 1px 2px rgba(34,25,25,0.25), 0 0 4px rgba(232,230,230,0.5);
@@ -235,7 +242,6 @@ a.ch-btn-skin:visited {
 }
 
 .ch-stats li {
-	float: left;
 	margin: 0 10px 0 0;
 	padding: 0 10px 0 0;
 	border-right: 1px solid #ccc;
@@ -275,14 +281,14 @@ a.ch-btn-skin:visited {
 	margin: 10px;
 }
 
-.video .description {
+/*.video .description {
 	word-wrap: break-word;
 	margin: 10px 0 0;
 	color: #211922;
 	background: #FFF;
 	padding-top: 10px;
 	border-top: 1px ridge rgba(0,0,0,0.1);
-}
+}*/
 
 .video .author {
 	padding: 10px 15px;

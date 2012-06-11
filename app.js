@@ -7,7 +7,7 @@ var sys = require("util"),
 	pintubest = require("./libs/pintubest").Pintubest,
 	port = process.argv[2] || 80,
 	app = module.exports = express.createServer(),
-	hottest = pintubest.hottest();
+	best = pintubest.hottest();
 
 /**
  * App configuration.
@@ -32,46 +32,54 @@ app.configure("production", function () {
 /**
  * Routes.
  */
-// Index
+
+ // Index
 app.get("/", function (req, res, next) {
-	res.render("index", {"video": hottest.collection(0), "page": 1});
+	res.render("index", {"video": best.collection(0), "page": 1});
 });
 
-// Hottest pagination
+// Search
+app.get("/search", function (req, res, next) {
+	if (req.query.q) {
+		res.redirect("/" + req.query.q.split(" ").join("+"), 301);
+		return;
+	}
+});
+
+// Best pagination
 app.get("/page/:page?", function (req, res, next) {
+
 	var page = parseInt(req.params.page),
 		id = page-1;
 
-	if (page <= 1 || isNaN(page)) {
+	if (page <= 1 || isNaN(page) || page === 1) {
 		res.redirect("/", 301);
 	}
 
-	if (hottest.collection(id)) {
-		res.render("index", {"video": hottest.collection(id), "page": page});
+	if (best.collection(id)) {
+		res.render("index", {"video": best.collection(id), "page": page});
 
 	} else {
-		hottest.next(page);
-		hottest.on("render", function () {
-			res.render("index", {"video": hottest.collection(id), "page": page});
+		best.next(page);
+		best.on("render", function () {
+			if (best.collection(id)) {
+				res.render("index", {"video": best.collection(id), "page": page});
+			} else {
+				res.redirect("/", 301);
+			}
 		});
 	}
 });
 
-// Search
-app.get("/best/:query?", function (req, res, next) {
-	
-	if (req.query.q) {
-		res.redirect("/best/" + req.query.q.split(" ").join("+"), 301);
-		return;
-	}
+app.get("/:query/:page?/:number?", function (req, res, next) {
 
-	if (req.params.query === undefined) {
-		res.redirect("/", 301);
+	if (req.params.page !== "page" && req.params.page !== undefined && isNaN(req.params.number)) {
+		next();
 		return;
 	}
 
 	var query = req.params.query.split("+").join(" "),
-		page = parseInt(req.query.page) || 1,
+		page = parseInt(req.params.number) || 1,
 		id = page - 1,
 		search = pintubest.search();
 
@@ -81,8 +89,9 @@ app.get("/best/:query?", function (req, res, next) {
 	});
 
 	search.on("render", function () {
-		res.render("index", {"video": search.collection(id), "searchPage": 1, "query": query});
+		res.render("index", {"video": search.collection(id), "searchPage": page, "query": query});
 	});
+
 });
 
 
@@ -91,7 +100,7 @@ app.get("/best/:query?", function (req, res, next) {
 
 setInterval(function () {
 	console.log("Restarting!");
-	hottest.reset();
+	best.reset();
 }, 86400000);
 
 app.listen(port);

@@ -1,4 +1,5 @@
 - var id = video.id["$t"].split(":").pop();
+- var img = video["media$group"]["media$thumbnail"][2].url
 
 li
 	article.video
@@ -6,8 +7,8 @@ li
 			h2.title #{video.title["$t"]}
 		section
 			figure
-				iframe(width="100%", height="300", src="http://www.youtube.com/embed/#{id}?html5=1", frameborder="0", allowfullscreen)
-				figcaption.description #{video.media$group.media$description["$t"]}
+				a(href="http://www.youtube.com/embed/#{id}?html5=1&autoplay=1")
+					img(width="100%", src="#{img}")
 
 			p.author
 				strong #{video.author[0].name["$t"]}
@@ -26,4 +27,4 @@ li
 					li.ch-icon-thumbs-up
 						| #{video["yt$rating"].numLikes}
 						span likes&nbsp;&nbsp;
-		a(href="http://pinterest.com/pin/create/button/?url=#{video.link[0].href}&media=#{video["media$group"]["media$thumbnail"][0].url}&description=#{video.title["$t"]}", class="ch-btn-skin ch-btn-tiny ch-icon-pushpin repin", count-layout="none") Pin it!
+		a(href="http://pinterest.com/pin/create/button/?url=#{video.link[0].href}&media=#{img}&description=#{video.title["$t"]}", class="ch-btn-skin ch-btn-tiny ch-icon-pushpin repin", count-layout="none") Pin it!
