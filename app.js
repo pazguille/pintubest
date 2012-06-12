@@ -46,6 +46,15 @@ app.get("/search", function (req, res, next) {
 	}
 });
 
+// Video View
+/*app.get("/video/:id", function (req, res, next) {
+	res.render("video", {"video": {
+		"id": req.params.id,
+		"title": req.params.title
+		"img": req.params.img
+	});
+});*/
+
 // Best pagination
 app.get("/page/:page?", function (req, res, next) {
 

@@ -1,0 +1,29 @@
+section#results
+	article.video
+			header
+				h2.title #{video.title}
+			section
+				figure
+					iframe(src="http://www.youtube.com/embed/#{video.id}?html5=1&autoplay=1", width="100%", frameborder="0", allowfullscreen)
+
+				p.author
+					strong #{video.author}
+					| uploaded
+
+			footer.details
+				ul.ch-stats
+					- if (video["yt$statistics"])
+						li.ch-icon-eye-open
+							| #{video["yt$statistics"].viewCount}
+							span views&nbsp;&nbsp;
+					- if (video["gd$comments"])
+						//li.ch-icon-comment
+							| #{video["gd$comments"]["gd$feedLink"].countHint}
+							span comments&nbsp;&nbsp;
+					- if (video["yt$rating"])
+						li.ch-icon-thumbs-up
+							| #{video["yt$rating"].numLikes}
+							span likes&nbsp;&nbsp;
+
+			a(href="http://pinterest.com/pin/create/button/?url=http://pintubest.com/video/#{video.id}&media=#{video.img}&description=#{video.title}", class="ch-btn-skin ch-btn-tiny ch-icon-pushpin repin", count-layout="none") Pin it!
+	

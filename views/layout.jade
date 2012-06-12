@@ -2,7 +2,12 @@
 html.no-js(lang="en")
 	head
 		meta(charset="utf-8")
-		title Pintubest :)
+		title 
+			- if (query !== undefined)
+				| #{query} | Pintubest
+			- else
+				| Pintubest :)
+
 		link(rel="shortcut icon", href="/src/assets/favicon.ico")
 		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Lobster+Two:400italic")
 		link(rel="stylesheet", href="/src/css/normalize.css")
@@ -45,6 +50,8 @@ html.no-js(lang="en")
 
 			$videoList.on("click", ".repin", function () {
 				window.showModalDialog(this.href);
+
+				//(function(){ var e = document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})();
 				return false;
 			});
 
