@@ -29,8 +29,23 @@
 	text-indent: 0px;
 }
 
-.video {
-	padding-top: 55px;
+.landing h2 {
+	font-size: 3em;
+	line-height: 1.5em;
+	margin: 5px 0 10px;
+	display: inline-block;
+	text-align: left;
+}
+
+
+.landing .facebook {
+	top: 50%;
+}
+
+
+.video,
+.video figure {
+	border-radius: 5px 5px 0 0
 }
 
 .video .title {
@@ -63,10 +78,6 @@
 	-moz-opacity: 1;
 	filter:alpha(opacity=1);
 }*/
-
-.repin {
-	top: 14px;
-}
 
 /*--
 	Landscape view

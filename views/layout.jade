@@ -6,7 +6,7 @@ html.no-js(lang="en")
 			- if (query !== undefined)
 				| #{query} | Pintubest
 			- else
-				| Pintubest :)
+				| Pintubest - Pin the best videos of youtube
 
 		link(rel="shortcut icon", href="/src/assets/favicon.ico")
 		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Lobster+Two:400italic")
@@ -35,8 +35,9 @@ html.no-js(lang="en")
 		script
 
 			var _gaq=[['_setAccount','UA-15753373-5'],['_trackPageview']],
+				$login = $(".signup-pinterest-button"),
 				$videoList = $(".ch-slats"),
-				$iframe = $("<iframe width=\\"100%\\" frameborder=\\"0\\" allowfullscreen>");
+				$iframe = $("<iframe width=\\"100%\\" frameborder=\\"0\\" webkitallowfullscreen=\\"true\\" mozallowfullscreen=\\"true\\" allowfullscreen=\\"true\\">");
 
 			$videoList.on("click", ".video figure a", function () {
 				$i = $iframe.clone();
@@ -44,7 +45,17 @@ html.no-js(lang="en")
 					"src": this.href,
 					"height": this.clientHeight - 4
 				});
+
 				this.parentElement.replaceChild($i[0], this);
+
+				//$i[0].webkitRequestFullScreen();
+
+				return false;
+			});
+
+			$login.on("click", function () {
+				window.showModalDialog(this.href);
+
 				return false;
 			});
 

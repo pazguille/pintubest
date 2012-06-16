@@ -334,6 +334,9 @@ li[class^="ch-icon-"].icon-large:before, li[class*=" ch-icon-"].icon-large:befor
 .ch-icon-bar-chart:before          { content: "\f080"; }
 .ch-icon-twitter-sign:before       { content: "\f081"; }
 .ch-icon-facebook-sign:before      { content: "\f082"; }
+.ch-icon-facebook:before      	   { content: "\f09a"; }
+.ch-icon-pinterest-sign:before     { content: "\f0d3"; }
+.ch-icon-pinterest:before      	   { content: "\f0d2"; }
 .ch-icon-camera-retro:before       { content: "\f083"; }
 .ch-icon-key:before                { content: "\f084"; }
 .ch-icon-cogs:before               { content: "\f085"; }

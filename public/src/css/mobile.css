@@ -2,6 +2,10 @@
 	margin: 10px 0;
 }
 
+.landing {
+	padding: 0 0 5px;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 /* Styles */
@@ -20,6 +24,14 @@
 	.ch-logo[class*=" ch-icon-"]::after {
 		padding-right: 3px;
 		font-size: 1.1em;
+	}
+
+	.landing h2 {
+		font-size: 1.5em;
+	}
+
+	.landing .signup-pinterest-button {
+		font-size: 1em;
 	}
 }
 
