@@ -1,7 +1,6 @@
 ﻿body {
 	
-	background: #f7f5f5 url("http://subtlepatterns.com/patterns/first_aid_kit.png") repeat;
-	/*background: #f7f5f5 url("../assets/absurdidad.png") repeat;*/
+	background: #f7f5f5 url("../assets/first_aid_kit.png") repeat;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
 	color: #524D4D;
 	font-family: "Helvetica Neue", Helvetica, Arial, "MS Trebuchet", sans-serif;
