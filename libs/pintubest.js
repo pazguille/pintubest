@@ -1,7 +1,7 @@
 var sys = require("util"),
 	fs = require("fs"),
 	eventEmitter = require("events").EventEmitter,
-	https = require("https"),	
+	https = require("https"),
 	Pintubest = (function () {
 		var that = new eventEmitter,
 			max_results = 12,
@@ -36,16 +36,20 @@ var sys = require("util"),
 			// top_rated
 			// top_favorites
 			// most_viewed
-			// most_popular
+			// most_shared
+			// most_popular (deprecated)
 			// most_discussed
+			// most_recent
 			// most_responded
+			// on_the_web
+			// recently_featured
 			var that = new eventEmitter,
 				collection = [],
 				start = 1,
 				options = function () {
 					return {
 						host: "gdata.youtube.com",
-						path: "/feeds/api/standardfeeds/most_popular?v=2&time=today&alt=json&format=5&max-results=" + max_results + "&start-index=" + (max_results * start - max_results + 1),
+						path: "/feeds/api/standardfeeds/recently_featured?v=2&time=today&alt=json&format=5&max-results=" + max_results + "&start-index=" + (max_results * start - max_results + 1),
 						method: "GET"
 					}
 				};
@@ -95,7 +99,7 @@ var sys = require("util"),
 					collection[page-1] = data.feed.entry
 					that.emit("render");
 				});
-				
+
 			};
 
 			that.collection = function (id) {

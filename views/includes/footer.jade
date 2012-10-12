@@ -4,8 +4,9 @@
 - var end = end || false;
 - if (video !== undefined && !end)
 	footer
-	- if (searchPage === undefined && video.length === 12)
-		a.ch-btn.more(href="/page/#{page+1}") Keep going
+		- if (searchPage === undefined && video.length === 12)
+			a.ch-btn.js-more(href="/page/#{page+1}") Keep going
 
-	- else if (video !== undefined && video.length === 12 && searchPage)
-		a.ch-btn.more(href="/#{query}/page/#{searchPage+1}") Keep going
+		- else if (video !== undefined && video.length === 12 && searchPage)
+			a.ch-btn.js-more(href="/#{query}/page/#{searchPage+1}", data-query="#{query}", data-search="true") Keep going
+		div.ch-loading.ch-hide
