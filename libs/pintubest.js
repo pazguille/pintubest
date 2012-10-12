@@ -45,7 +45,7 @@ var sys = require("util"),
 				options = function () {
 					return {
 						host: "gdata.youtube.com",
-						path: "/feeds/api/standardfeeds/most_popular?v=2&time=today&alt=json&format=5&max-results=" + max_results + "&start-index=" + (max_results * start - max_results + 1),
+						path: "/feeds/api/standardfeeds/recently_featured?v=2&time=today&alt=json&format=5&max-results=" + max_results + "&start-index=" + (max_results * start - max_results + 1),
 						method: "GET"
 					}
 				};
