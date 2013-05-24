@@ -1,8 +1,8 @@
 section#results
 
 	.landing
-		h2 Discover and pin the best videos
-		a.signup-pinterest-button.ch-icon-pinterest(href="https://pinterest.com/login/?next=/pin/create/bookmarklet/?media%3Dhttp%3A//pintubest.com/src/assets/pintubest-big.png%26url%3Dhttp%3A//www.pintubest.com%26title%3DPintubest%26description%3DDiscover%20and%20pin%20the%20best%20videos", target="_blank") Sign in with Pinterest
-		iframe.facebook(src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fpintubest.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=236041909832555", scrolling="no", frameborder="0", style="border:none; overflow:hidden; width:75px; height:20px;", allowTransparency="true")
+		h2 Discover and share the best videos
+		a.signup-button.ch-icon-user(href="https://pinterest.com/login/?next=/pin/create/bookmarklet/?media%3Dhttp%3A//pintubest.com/src/assets/pintubest-big.png%26url%3Dhttp%3A//www.pintubest.com%26title%3DPintubest%26description%3DDiscover%20and%20pin%20the%20best%20videos", target="_blank") Sign in
+		iframe.facebook(src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fpintubest.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=236041909832555", scrolling="no", frameborder="0", style="border:none; overflow:hidden; width:81px; height:20px;", allowTransparency="true")
 
 	ol.ch-slats!= partial("partials/video", {"collection": video})

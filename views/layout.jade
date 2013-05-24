@@ -6,7 +6,7 @@ html.no-js(lang="en")
 			- if (query !== undefined)
 				| #{query} | Pintubest
 			- else
-				| Pintubest - Discover and pin the best videos
+				| Pintubest - Discover and share the best videos
 
 		link(rel="shortcut icon", href="/src/assets/favicon.ico")
 		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Lobster+Two:400italic")
@@ -34,7 +34,7 @@ html.no-js(lang="en")
 		script(src="http://code.jquery.com/jquery.min.js")
 		script
 			var _gaq=[['_setAccount','UA-15753373-5'],['_trackPageview']],
-				$login = $(".signup-pinterest-button"),
+				$login = $(".signup-button"),
 				$videoList = $(".ch-slats"),
 				$iframe = $("<iframe width=\\"100%\\" frameborder=\\"0\\" webkitallowfullscreen=\\"true\\" mozallowfullscreen=\\"true\\" allowfullscreen=\\"true\\">");
 
@@ -57,7 +57,7 @@ html.no-js(lang="en")
 				}
 			});
 
-			$videoList.on("click", ".repin", function () {
+			$videoList.on("click", ".share", function () {
 				if (window.showModalDialog) {
 					window.showModalDialog(this.href);
 					return false;
