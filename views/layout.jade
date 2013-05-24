@@ -6,7 +6,7 @@ html.no-js(lang="en")
 			- if (query !== undefined)
 				| #{query} | Pintubest
 			- else
-				| Pintubest - Discover and share the best videos
+				| Pintubest - Discover and star the best videos
 
 		link(rel="shortcut icon", href="/src/assets/favicon.ico")
 		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Lobster+Two:400italic")
@@ -57,7 +57,7 @@ html.no-js(lang="en")
 				}
 			});
 
-			$videoList.on("click", ".share", function () {
+			$videoList.on("click", ".star", function () {
 				if (window.showModalDialog) {
 					window.showModalDialog(this.href);
 					return false;
