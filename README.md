@@ -1,4 +1,4 @@
-# Pintubest
+# Shatelly
 
 ## It was built using
 - NodeJS

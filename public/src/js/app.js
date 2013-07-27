@@ -27,122 +27,122 @@ var Video = Backbone.Model.extend({});
 * Collections
 */
 var VideosCollection = Backbone.Collection.extend({
-	"model": Video,
+    "model": Video,
 
-	"sync": function (method, model, options) {
-		options.dataType = "jsonp";
-		return Backbone.sync(method, model, options);
-	},
+    "sync": function (method, model, options) {
+        options.dataType = "jsonp";
+        return Backbone.sync(method, model, options);
+    },
 
-	"parse": function (response) {
-		return response.feed.entry;
-	},
+    "parse": function (response) {
+        return response.feed.entry;
+    },
 
-	"url": "http://gdata.youtube.com/feeds/api/standardfeeds/most_viewed?time=this_week&alt=json&format=5"
+    "url": "http://gdata.youtube.com/feeds/api/standardfeeds/most_viewed?time=this_week&alt=json&format=5"
 });
 
 /*
 * Views
 */
 var PinView = Backbone.View.extend({
-	"tagName": "li",
+    "tagName": "li",
 
-	"template": _.template($("#tpl-pin").html()),
+    "template": _.template($("#tpl-pin").html()),
 
-	"render": function () {
-		var pin = this.model.toJSON();
+    "render": function () {
+        var pin = this.model.toJSON();
 
-		$(this.el).html(this.template(pin));
+        $(this.el).html(this.template(pin));
 
-		return this;
-	}
+        return this;
+    }
 });
 
 var AppView = Backbone.View.extend({
-	"el": "#hottest",
+    "el": "#hottest",
 
-	"initialize": function () {
-		this.page = 1;
-		this.limit = 50;
-		this.collection = new PinsCollection();
-		
-		this.$el
-			.prepend(this.$list);
+    "initialize": function () {
+        this.page = 1;
+        this.limit = 50;
+        this.collection = new PinsCollection();
 
-		this.$el.removeClass("ch-hide");
+        this.$el
+            .prepend(this.$list);
 
-		this.reset();
+        this.$el.removeClass("ch-hide");
 
-		this.fetch();
-	},
+        this.reset();
 
-	"events": {
-		"scroll": "more",
-		"click .repin": "repin"
-	},
+        this.fetch();
+    },
 
-	"$list": $("<ul class=\"ch-slats ch-hide\">"),
+    "events": {
+        "scroll": "more",
+        "click .repin": "repin"
+    },
 
-	"$loading": $(".ch-loading"),
+    "$list": $("<ul class=\"ch-slats ch-hide\">"),
 
-	"render": function () {
-		var that = this;
+    "$loading": $(".ch-loading"),
 
-		_.each(this.collection.models, function (pin) {
-			var pin = new PinView({"model": pin});
-			that.$list.append(pin.render().el);
-		}, this);
+    "render": function () {
+        var that = this;
 
-		this.$list.removeClass("ch-hide");
+        _.each(this.collection.models, function (pin) {
+            var pin = new PinView({"model": pin});
+            that.$list.append(pin.render().el);
+        }, this);
 
-		that.trigger("end");
+        this.$list.removeClass("ch-hide");
 
-		return this;
-	},
+        that.trigger("end");
 
-	"fetch":  function () {
-		var that  = this;
+        return this;
+    },
 
-		this.$loading.removeClass("ch-hide");
+    "fetch":  function () {
+        var that  = this;
 
-		this.collection.fetch({
-			"data": {
-				"limit": this.limit,
-				"page": that.page
-			},
-			"success": function () {
-				that.$loading.addClass("ch-hide");
-				that.render();
-			}
-		});
-	},
+        this.$loading.removeClass("ch-hide");
 
-	"more": function () {
-		var height = this.$list.height() - this.$el.height();
-		var bottom = this.el.scrollTop;
-		if (height === bottom) {
-			this.page += 1;
-			this.fetch();
-		};
+        this.collection.fetch({
+            "data": {
+                "limit": this.limit,
+                "page": that.page
+            },
+            "success": function () {
+                that.$loading.addClass("ch-hide");
+                that.render();
+            }
+        });
+    },
 
-		return;
-	},
+    "more": function () {
+        var height = this.$list.height() - this.$el.height();
+        var bottom = this.el.scrollTop;
+        if (height === bottom) {
+            this.page += 1;
+            this.fetch();
+        };
 
-	"repin": function (event) {		
-		chrome.tabs.create({url: event.target.href});
-		window.close();
+        return;
+    },
 
-		return false;
-	},
+    "repin": function (event) {
+        chrome.tabs.create({url: event.target.href});
+        window.close();
 
-	"reset": function () {
-		this.page = 1;
-		this.collection.reset();
-		this.$list.html("");
-	}
+        return false;
+    },
+
+    "reset": function () {
+        this.page = 1;
+        this.collection.reset();
+        this.$list.html("");
+    }
 
 });
 var hottest;
 setTimeout(function () {
-	hottest = new AppView();
+    hottest = new AppView();
 }, 1000);

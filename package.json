@@ -1,0 +1,22 @@
+{
+  "name": "shatelly",
+  "version": "1.0.0",
+  "description": "Shatelly is a simple way to discover and share great videos.",
+  "author": "@pazguille",
+  "scripts": {
+    "start": "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pazguille/shatelly.git"
+  },
+  "dependencies": {
+    "express": "2.5.9",
+    "jade": "0.25.0",
+    "gzippo": "0.2.0",
+    "http-proxy": "0.8.0"
+  },
+  "devDependencies": {},
+  "license": "MIT",
+  "engine": "node >= 0.8.x"
+}
