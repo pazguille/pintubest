@@ -11,10 +11,10 @@
     "url": "https://github.com/pazguille/shatelly.git"
   },
   "dependencies": {
-    "express": "2.5.9",
-    "jade": "0.25.0",
+    "express": "4.14.0",
+    "jade": "1.11.0",
     "gzippo": "0.2.0",
-    "http-proxy": "0.8.0"
+    "http-proxy": "1.16.2"
   },
   "devDependencies": {},
   "license": "MIT",
